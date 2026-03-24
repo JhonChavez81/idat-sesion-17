@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Flexbox vs Grid</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+/* Slides */
+.slide {
+  display: none;
+  height: 100vh;
+  padding: 60px;
+}
+
+.active {
+  display: block;
+}
+
+/* Código */
+pre {
+  background: #1e1e1e;
+  color: #00ff9f;
+  padding: 15px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+/* FLEXBOX */
+.flex-container {
+  display: flex;
+  gap: 10px;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  border: 1px solid #ccc;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* GRID */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar content"
+    "footer footer";
+  grid-template-columns: 1fr 2fr;
+  gap: 10px;
+}
+
+/* Boxes */
+.box {
+  background: #0d6efd;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.grid-box {
+  background: #198754;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Grid areas */
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.content { grid-area: content; }
+.footer { grid-area: footer; }
+
+/* Navegación */
+.nav-buttons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+button {
+  padding: 10px 15px;
+  margin: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.next { background: #0d6efd; color: white; }
+.prev { background: #6c757d; color: white; }
+</style>
+</head>
+
+<body>
+
+<!-- Slide 1 -->
+<div class="slide active" style="background:#111; color:white; text-align:center;">
+  <h1>CSS Flexbox vs Grid</h1>
+  <p>Modelos de diseño modernos en CSS</p>
+  <p>Permiten crear interfaces responsivas y organizadas</p>
+</div>
+
+<!-- Slide 2 -->
+<div class="slide">
+  <h2>¿Qué es Flexbox?</h2>
+
+  <p>
+    Flexbox (Flexible Box Layout) es un modelo de diseño en CSS diseñado para
+    distribuir, alinear y organizar elementos dentro de un contenedor, incluso
+    cuando su tamaño es dinámico o desconocido.
+  </p>
+
+  <p>
+    Trabaja en una sola dimensión, organizando elementos en una fila (row) o
+    columna (column).
+  </p>
+
+  <h4>Conceptos clave:</h4>
+  <ul>
+    <li>Contenedor flex (display: flex)</li>
+    <li>Items flex (elementos hijos)</li>
+    <li>Eje principal</li>
+    <li>Eje cruzado</li>
+  </ul>
+</div>
+
+<!-- Slide 3 -->
+<div class="slide">
+  <h2>¿Qué es CSS Grid?</h2>
+
+  <p>
+    CSS Grid es un sistema de diseño bidimensional que permite organizar
+    elementos en filas y columnas al mismo tiempo.
+  </p>
+
+  <p>
+    Permite crear layouts completos y controlar exactamente la posición de cada elemento.
+  </p>
+
+  <h4>Conceptos clave:</h4>
+  <ul>
+    <li>Contenedor grid (display: grid)</li>
+    <li>Grid items</li>
+    <li>Filas y columnas</li>
+    <li>Áreas</li>
+  </ul>
+</div>
+
+<!-- Slide 4 -->
+<div class="slide">
+  <h2>Diferencias clave</h2>
+
+  <ul>
+    <li>Flexbox → 1 dimensión</li>
+    <li>Grid → 2 dimensiones</li>
+    <li>Flexbox → alineación</li>
+    <li>Grid → estructura</li>
+  </ul>
+</div>
+
+<!-- Slide 5 -->
+<div class="slide">
+  <h2>Flexbox en fila</h2>
+
+  <div class="flex-container">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+  </div>
+
+  <h4>HTML:</h4>
+  <pre>
+&lt;div class="flex-container"&gt;
+  &lt;div&gt;1&lt;/div&gt;
+  &lt;div&gt;2&lt;/div&gt;
+  &lt;div&gt;3&lt;/div&gt;
+&lt;/div&gt;
+  </pre>
+
+  <h4>CSS:</h4>
+  <pre>
+.flex-container {
+  display: flex;
+}
+  </pre>
+</div>
+
+<!-- Slide 6 -->
+<div class="slide">
+  <h2>Flexbox centrado</h2>
+
+  <div class="flex-center">
+    <div class="box">Centro</div>
+  </div>
+
+  <h4>CSS:</h4>
+  <pre>
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  </pre>
+</div>
+
+<!-- Slide 7 -->
+<div class="slide">
+  <h2>Flexbox columna</h2>
+
+  <div class="flex-column">
+    <div class="box">A</div>
+    <div class="box">B</div>
+    <div class="box">C</div>
+  </div>
+
+  <h4>CSS:</h4>
+  <pre>
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+  </pre>
+</div>
+
+<!-- Slide 8 -->
+<div class="slide">
+  <h2>Grid básico</h2>
+
+  <div class="grid-container">
+    <div class="grid-box">1</div>
+    <div class="grid-box">2</div>
+    <div class="grid-box">3</div>
+  </div>
+
+  <h4>CSS:</h4>
+  <pre>
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+  </pre>
+</div>
+
+<!-- Slide 9 -->
+<div class="slide">
+  <h2>Grid con layout</h2>
+
+  <div class="grid-layout">
+    <div class="grid-box header">Header</div>
+    <div class="grid-box sidebar">Sidebar</div>
+    <div class="grid-box content">Content</div>
+    <div class="grid-box footer">Footer</div>
+  </div>
+
+  <h4>CSS:</h4>
+  <pre>
+.grid-layout {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar content"
+    "footer footer";
+}
+  </pre>
+</div>
+
+<!-- Slide 10 -->
+<div class="slide" style="background:#111; color:white;">
+  <h2>Conclusión</h2>
+  <ul>
+    <li>Flexbox → componentes pequeños</li>
+    <li>Grid → layouts completos</li>
+    <li>Se pueden combinar</li>
+  </ul>
+</div>
+
+<!-- Botones -->
+<div class="nav-buttons">
+  <button class="prev" onclick="prevSlide()">← Anterior</button>
+  <button class="next" onclick="nextSlide()">Siguiente →</button>
+</div>
+
+<script>
+let current = 0;
+const slides = document.querySelectorAll(".slide");
+
+function showSlide(index) {
+  slides.forEach(s => s.classList.remove("active"));
+  slides[index].classList.add("active");
+}
+
+function nextSlide() {
+  current = (current + 1) % slides.length;
+  showSlide(current);
+}
+
+function prevSlide() {
+  current = (current - 1 + slides.length) % slides.length;
+  showSlide(current);
+}
+</script>
+
+</body>
+</html>
